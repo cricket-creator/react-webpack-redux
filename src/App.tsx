@@ -1,7 +1,15 @@
-import * as React from "react";
+import React from "react";
 
-function App():JSX.Element {
-    return <h1>Simple React app with custom webpack config</h1>
+import Button from "components/Button";
+
+function App(): JSX.Element {
+  return (
+    <>
+      <h1>Simple React app with custom webpack config</h1>
+
+      <Button>Click on me</Button>
+    </>
+  );
 }
 
 export default App;
