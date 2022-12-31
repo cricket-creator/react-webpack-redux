@@ -1,21 +1,23 @@
-const path = require("path");
-const webpack = require("webpack");
-require("webpack-dev-server");
+import path from "path";
+import { Configuration } from "webpack";
+import "webpack-dev-server";
 
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
+
+type NodeEnv = Configuration["mode"];
 
 const port = process.env.PORT || 3000;
 
-let mode = "production";
+let mode: NodeEnv = "production";
 
 if (process.env.NODE_ENV) {
-  mode = process.env.NODE_ENV;
+  mode = process.env.NODE_ENV as NodeEnv;
 }
 
-const isDevelopment = process.env.NODE_ENV !== "production";
+const isDevelopment: boolean = process.env.NODE_ENV !== "production";
 
-const plugins = [
+const plugins: Configuration["plugins"] = [
   new HtmlWebpackPlugin({
     template: path.join(__dirname, "public", "index.html"),
   }),
@@ -25,7 +27,7 @@ const plugins = [
   }),
 ];
 
-module.exports = {
+const config: Configuration = {
   entry: path.join(__dirname, "src", "index.tsx"),
   output: {
     path: path.join(__dirname, "build"),
@@ -79,10 +81,16 @@ module.exports = {
     compress: true,
     port,
     onListening: function (devServer) {
+      if (!devServer) {
+        throw new Error("no server found");
+      }
+
       const address = devServer.server?.address();
       if (typeof address === "object") {
-        console.log(`Server running on port: ${address.port}`);
+        console.log(`Server running on port: ${address?.port}`);
       }
     },
   },
 };
+
+export default config;

@@ -2,8 +2,9 @@
 .vscode
 .idea
 
-# modules
+# directories
 node_modules
+build
 
 # environment
 .env
@@ -12,4 +13,4 @@ node_modules
 .env.production
 
 # package manager
-yarn.error.log
+yarn-error.log
