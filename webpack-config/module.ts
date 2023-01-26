@@ -5,7 +5,9 @@ const isDevelopment: boolean = process.env.NODE_ENV !== "production";
 
 const module: Configuration["module"] = {
   rules: [
-    { test: /\.html$/i, loader: "html-loader" },
+    { test: /\.(jsx?$)/, exclude: /node_modules/, use: ["babel-loader"] },
+    { test: /\.tsx?$/, exclude: /node_modules/, use: "ts-loader" },
+    { test: /\.html$/, loader: "html-loader" },
     {
       test: /\.s[ac]ss$/i,
       exclude: [/node_modules/, /\.module.s[ac]ss$/],
@@ -19,7 +21,7 @@ const module: Configuration["module"] = {
       ],
     },
     {
-      test: /\.module.s[ac]ss$/i,
+      test: /\.module.s[ac]ss$/,
       exclude: /node_modules/,
       use: [
         isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
@@ -30,7 +32,6 @@ const module: Configuration["module"] = {
         },
       ],
     },
-    { test: /\.tsx?$/i, exclude: /node_modules/, use: "ts-loader" },
   ],
 };
 
