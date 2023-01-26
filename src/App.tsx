@@ -1,5 +1,6 @@
 import React from "react";
 
+import Input from "components/Input";
 import Button from "components/Button";
 
 function App(): JSX.Element {
@@ -7,7 +8,9 @@ function App(): JSX.Element {
     <>
       <h1>Simple React app with custom webpack config</h1>
 
-      <Button>Click on me</Button>
+      <Input />
+
+      <Button type="button">Click on me</Button>
     </>
   );
 }
