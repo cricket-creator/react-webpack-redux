@@ -7,11 +7,9 @@ import devServer from "./webpack-config/devServer";
 
 type NodeEnv = Configuration["mode"];
 
-let mode: NodeEnv = "production";
-
-if (process.env.NODE_ENV) {
-  mode = process.env.NODE_ENV as NodeEnv;
-}
+const mode: NodeEnv = process.env.NODE_ENV
+  ? (process.env.NODE_ENV as NodeEnv)
+  : "production";
 
 const config: Configuration = {
   entry: path.join(__dirname, "src", "index.tsx"),
