@@ -4,7 +4,6 @@
   "main": "./src/index.tsx",
   "author": "PavelRakhaev <rakhaevpavel@gmail.com>",
   "license": "MIT",
-  "private": false,
   "scripts": {
     "dev": "webpack serve --mode=development",
     "build": "webpack --mode=production"
