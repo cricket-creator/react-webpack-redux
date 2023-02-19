@@ -4,6 +4,6 @@ declare module "*.svg" {
 }
 
 declare module "*.scss" {
-  const content: Record<string, any>;
-  export = content;
+  const styles: { readonly [key: string]: string };
+  export = styles;
 }
