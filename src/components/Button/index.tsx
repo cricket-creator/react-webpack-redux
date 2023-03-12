@@ -10,6 +10,7 @@ function Button(
 ): JSX.Element {
   return (
     <button
+      ref={ref}
       className={styles.btn}
       {...props}
     >
